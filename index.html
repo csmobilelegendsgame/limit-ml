@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Limit ML</title>
+<title>Limit MLBB</title>
 <style>
 body{font-family:sans-serif;text-align:center;padding:30px;background:#0f0f0f;color:white}
 h1{font-size:80px;margin:10px}
@@ -13,11 +13,11 @@ button{font-size:20px;padding:18px;border-radius:16px;border:none;width:100%;mar
 </style>
 </head>
 <body>
-<p>SISA JATAH BOT HARI INI</p>
+<p>Limit</p>
 <h1 id="sisa">7</h1>
 <p>/ 7</p>
-<button class="btn-bot" onclick="kurang()">BOT KETEMU -1</button>
-<button class="btn-reset" onclick="resetManual()">RESET MANUAL (PIN)</button>
+<button class="btn-bot" onclick="kurang()">DONE</button>
+<button class="btn-reset" onclick="resetManual()">Reset Limit</button>
 <p id="info">Reset otomatis jam 21:00<br>Notifikasi jam 19:00 kalau masih sisa</p>
 
 <script>
@@ -41,11 +41,11 @@ function simpan(){
 
 function resetManual(){
   let pin = prompt("Masukkan PIN reset:");
-  if(pin == "727730638"){
+  if(pin == "272007"){
     sisa=7; simpan();
-    alert("Berhasil reset jadi 7 lagi!");
+    alert("Berhasil reset limit");
   } else if(pin != null) {
-    alert("PIN salah!");
+    alert("PIN salah");
   }
 }
 
