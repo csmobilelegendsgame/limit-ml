@@ -1,0 +1,16 @@
+{
+  "name": "Limit ML",
+  "short_name": "Limit ML",
+  "description": "Penghitung limit bot ML",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0f0f0f",
+  "theme_color": "#ff4655",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3069/3069020.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
