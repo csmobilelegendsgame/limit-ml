@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Limit ML</title>
+<style>
+body{font-family:sans-serif;text-align:center;padding:40px;background:#0f0f0f;color:white}
+h1{font-size:80px;margin:10px}
+button{font-size:24px;padding:20px 40px;border-radius:20px;border:none;background:#ff4655;color:white;width:100%}
+#info{margin-top:20px;color:#aaa}
+</style>
+</head>
+<body>
+<p>SISA JATAH BOT HARI INI</p>
+<h1 id="sisa">7</h1>
+<p>/ 7</p>
+<button onclick="kurang()">BOT KETEMU -1</button>
+<p id="info">Reset otomatis jam 21:00<br>Notifikasi jam 19:00 kalau masih sisa</p>
+
+<script>
+let sisa = localStorage.getItem('sisa') ? parseInt(localStorage.getItem('sisa')) : 7;
+let tgl = localStorage.getItem('tgl');
+let hariIni = new Date().toDateString();
+
+// reset jam 9 malam
+if(tgl !== hariIni && new Date().getHours() >= 21){ sisa=7; }
+
+document.getElementById('sisa').innerText = sisa;
+
+// minta izin notifikasi
+if(Notification.permission !== "granted"){ Notification.requestPermission(); }
+
+function kurang(){
+  if(sisa>0){ sisa--; localStorage.setItem('sisa',sisa); 
+  localStorage.setItem('tgl',hariIni);
+  document.getElementById('sisa').innerText=sisa;
+  if(sisa==0) alert("Habis! Tunggu jam 9 reset");
+ }
+}
+
+// cek tiap 1 menit
+setInterval(()=>{
+  let now = new Date();
+  let jam = now.getHours(); let menit = now.getMinutes();
+
+  if(jam==19 && menit==0 && sisa>0){
+    new Notification("Limit ML mau hangus!", {body:`Sisa ${sisa}x lagi bos, habisin sebelum jam 9!`});
+  }
+  if(jam==21 && menit==0){
+    sisa=7; localStorage.setItem('sisa',7);
+    document.getElementById('sisa').innerText=7;
+    new Notification("Reset!", {body:"Limit balik jadi 7 lagi!"});
+  }
+}, 60000);
+</script>
+</body>
+  </html>
